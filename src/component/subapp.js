@@ -1,10 +1,13 @@
 import React, {useEffect, useContext} from 'react';
 import CountContext from "../context/count";
+import useMousePosition from "../hooks/mouseposition";
+
 
 const SubApp = (props)=>{
 
     //access data from the context which we created
     const {count, dispatch} = useContext(CountContext);
+    const position = useMousePosition();
 
     // this will be set up everytime this child component is created and run only once
     useEffect(()=>{
@@ -20,6 +23,7 @@ const SubApp = (props)=>{
     return (
       <div>
         Square of count is {count*count}
+        <p>{position.x} , {position.y}</p>
       </div>
     );
   
